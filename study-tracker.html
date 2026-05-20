@@ -58,4 +58,823 @@
   }
   .header-top {
     display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 14
+    margin-bottom: 14px; gap: 12px;
+  }
+  .date-display { font-size: 13px; color: #718096; }
+  .date-display .today { font-size: 20px; font-weight: 700; color: #2d3748; margin-top: 2px; }
+  .settings-btn {
+    background: #edf2f7; border: none; padding: 8px 14px; border-radius: 10px;
+    cursor: pointer; font-size: 13px; color: #4a5568; font-weight: 600;
+  }
+  .settings-btn:hover { background: #e2e8f0; }
+
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  }
+  .stat-box {
+    background: linear-gradient(135deg, #fff5eb, #ffe8d6);
+    border-radius: 14px; padding: 10px 8px; text-align: center;
+  }
+  .stat-box.points { background: linear-gradient(135deg, #ebf4ff, #d6e9ff); }
+  .stat-box.level { background: linear-gradient(135deg, #f0fff4, #d4f5dd); }
+  .stat-icon { font-size: 20px; margin-bottom: 2px; }
+  .stat-value { font-size: 22px; font-weight: 800; color: #2d3748; line-height: 1; }
+  .stat-label { font-size: 10px; color: #718096; margin-top: 4px; font-weight: 600; }
+  .level-bar {
+    height: 5px; background: rgba(0,0,0,0.08); border-radius: 3px; margin-top: 6px; overflow: hidden;
+  }
+  .level-bar-fill {
+    height: 100%; background: linear-gradient(90deg, #48bb78, #38a169);
+    border-radius: 3px; transition: width 0.6s ease;
+  }
+
+  .section-title {
+    font-size: 13px; font-weight: 700; color: #4a5568;
+    margin: 16px 4px 10px; letter-spacing: 0.5px;
+  }
+  .subjects { display: flex; flex-direction: column; gap: 10px; }
+  .subject-card {
+    background: white; border-radius: 16px; padding: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border: 2px solid transparent; transition: all 0.3s;
+  }
+  .subject-card.completed {
+    border-color: #48bb78;
+    background: linear-gradient(135deg, #f0fff4, #ffffff);
+  }
+  .subject-header {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;
+  }
+  .subject-name {
+    display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700;
+  }
+  .subject-emoji {
+    width: 38px; height: 38px; border-radius: 12px; display: flex;
+    align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0;
+  }
+  .subj-eng { background: #fed7e2; }
+  .subj-math { background: #c6f6d5; }
+  .subj-jpn { background: #fefcbf; }
+  .subject-target { font-size: 11px; color: #718096; font-weight: 500; }
+  .subject-progress {
+    height: 10px; background: #edf2f7; border-radius: 5px; overflow: hidden; margin-bottom: 12px;
+  }
+  .subject-progress-fill {
+    height: 100%; background: linear-gradient(90deg, #f6ad55, #ed8936);
+    border-radius: 5px; transition: width 0.5s ease;
+  }
+  .subject-card.completed .subject-progress-fill {
+    background: linear-gradient(90deg, #48bb78, #38a169);
+  }
+  .subject-actions {
+    display: flex; gap: 8px; align-items: center;
+  }
+  .time-input {
+    flex: 1; padding: 10px 12px; border: 1.5px solid #e2e8f0; border-radius: 10px;
+    font-size: 16px; font-family: inherit; outline: none; width: 100%;
+    min-width: 0;
+  }
+  .time-input:focus { border-color: #4299e1; }
+  .record-btn {
+    background: linear-gradient(135deg, #4299e1, #3182ce);
+    color: white; border: none; padding: 11px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(66,153,225,0.3);
+    transition: transform 0.1s;
+    flex-shrink: 0;
+  }
+  .record-btn:hover { transform: translateY(-1px); }
+  .record-btn:active { transform: translateY(0); }
+
+  .cheer-bubble {
+    background: linear-gradient(135deg, #fff5f5, #fed7d7);
+    border-radius: 16px; padding: 14px; margin-top: 12px;
+    border-left: 4px solid #fc8181;
+    animation: slideIn 0.5s ease;
+  }
+  .cheer-from { font-size: 11px; color: #c53030; font-weight: 700; margin-bottom: 4px; }
+  .cheer-msg { font-size: 14px; color: #2d3748; font-weight: 500; }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .badges-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); gap: 8px;
+    background: white; border-radius: 16px; padding: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .badge {
+    text-align: center; padding: 10px 4px; border-radius: 12px;
+    background: #f7fafc; opacity: 0.35; transition: all 0.3s;
+  }
+  .badge.unlocked {
+    opacity: 1; background: linear-gradient(135deg, #fefcbf, #f6e05e);
+  }
+  .badge-icon { font-size: 26px; line-height: 1; }
+  .badge-name { font-size: 10px; font-weight: 700; color: #4a5568; margin-top: 4px; }
+
+  .calendar {
+    background: white; border-radius: 16px; padding: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+  }
+  .cal-day {
+    aspect-ratio: 1; border-radius: 6px; background: #edf2f7;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #a0aec0; font-weight: 600;
+  }
+  .cal-day.l1 { background: #c6f6d5; color: #22543d; }
+  .cal-day.l2 { background: #9ae6b4; color: #22543d; }
+  .cal-day.l3 { background: #68d391; color: white; }
+  .cal-day.l4 { background: #48bb78; color: white; }
+  .cal-legend {
+    display: flex; align-items: center; gap: 6px; justify-content: flex-end;
+    margin-top: 10px; font-size: 11px; color: #718096;
+  }
+  .cal-legend-box { width: 12px; height: 12px; border-radius: 3px; background: #edf2f7; }
+
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    display: none; align-items: center; justify-content: center; z-index: 100;
+    padding: 16px;
+  }
+  .modal-bg.show { display: flex; }
+  .modal {
+    background: white; border-radius: 20px; padding: 22px;
+    max-width: 460px; width: 100%; max-height: 85vh; overflow-y: auto;
+  }
+  .modal h2 { font-size: 18px; margin-bottom: 14px; }
+  .modal label {
+    display: block; font-size: 13px; font-weight: 600; color: #4a5568; margin-bottom: 4px;
+  }
+  .modal input, .modal textarea {
+    width: 100%; padding: 10px 12px; border: 1.5px solid #e2e8f0; border-radius: 10px;
+    font-size: 14px; font-family: inherit; margin-bottom: 12px; outline: none;
+  }
+  .modal textarea { resize: vertical; min-height: 70px; }
+  .modal-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+  .modal-btn {
+    padding: 10px 18px; border-radius: 10px; border: none; font-weight: 600;
+    cursor: pointer; font-size: 14px;
+  }
+  .modal-btn.primary { background: #4299e1; color: white; }
+  .modal-btn.secondary { background: #edf2f7; color: #4a5568; }
+
+  .toast {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    background: #2d3748; color: white; padding: 14px 24px;
+    border-radius: 12px; font-weight: 600; z-index: 200;
+    opacity: 0; transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    max-width: 90%; font-size: 14px;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+
+  .celebration {
+    position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+    z-index: 150; pointer-events: none; padding: 20px;
+  }
+  .celebration.show { display: flex; }
+  .celebration-card {
+    background: white; border-radius: 24px; padding: 28px 36px; text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    animation: pop 0.5s ease;
+  }
+  @keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .celebration-icon { font-size: 56px; }
+  .celebration-title { font-size: 20px; font-weight: 800; margin-top: 10px; color: #2d3748; }
+  .celebration-sub { font-size: 13px; color: #718096; margin-top: 4px; }
+
+  .tabs { display: flex; gap: 4px; margin-bottom: 12px; }
+  .tab {
+    flex: 1; padding: 10px; border-radius: 12px; background: white;
+    text-align: center; cursor: pointer; font-weight: 600; font-size: 13px;
+    color: #718096; border: 2px solid transparent;
+  }
+  .tab.active { background: #4299e1; color: white; }
+
+  .hidden { display: none !important; }
+
+  .msg-list {
+    background: #f7fafc; border-radius: 10px; padding: 8px; margin-bottom: 10px;
+    max-height: 200px; overflow-y: auto;
+  }
+  .msg-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 8px; border-bottom: 1px solid #e2e8f0; font-size: 13px;
+    gap: 8px;
+  }
+  .msg-item:last-child { border-bottom: none; }
+  .msg-item span { flex: 1; word-break: break-word; }
+  .msg-del {
+    background: none; border: none; color: #e53e3e; cursor: pointer; font-size: 12px;
+    flex-shrink: 0;
+  }
+  @media (max-width: 380px) {
+    .subject-name { font-size: 15px; }
+    .stat-value { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="login-bar">
+    <div class="sync-status hidden" id="syncStatus">
+      <span id="syncIcon">●</span> <span id="syncText">同期OK</span>
+    </div>
+    <button class="login-btn" id="loginBtn">
+      <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3.1l5.7-5.7C34.9 6.1 29.7 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7L13 19.6C14.8 15.1 19 12 24 12c3.1 0 5.8 1.1 8 3.1l5.7-5.7C34.9 6.1 29.7 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.5 0 10.6-2.1 14.4-5.5l-6.6-5.6c-2.1 1.4-4.7 2.2-7.7 2.2-5.2 0-9.6-3.3-11.2-7.9l-6.6 5.1C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.6 5.6c-.5.4 7-5.1 7-15.3 0-1.3-.1-2.6-.4-3.9z"/></svg>
+      Googleでログイン
+    </button>
+    <div class="user-info hidden" id="userInfo">
+      <div class="user-avatar" id="userAvatar"></div>
+      <span class="user-name" id="userName"></span>
+      <span class="logout-link" id="logoutLink">ログアウト</span>
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="header-top">
+      <div class="date-display">
+        <div id="dateDay"></div>
+        <div class="today" id="dateMain"></div>
+      </div>
+      <button class="settings-btn" id="settingsBtn">⚙ 設定</button>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-value" id="streakVal">0</div>
+        <div class="stat-label">連続日数</div>
+      </div>
+      <div class="stat-box points">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-value" id="pointsVal">0</div>
+        <div class="stat-label">ポイント</div>
+      </div>
+      <div class="stat-box level">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-value" id="levelVal">Lv.1</div>
+        <div class="stat-label" id="levelSub">次まで 100pt</div>
+        <div class="level-bar"><div class="level-bar-fill" id="levelBar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="today">今日</div>
+    <div class="tab" data-tab="badges">バッジ</div>
+    <div class="tab" data-tab="calendar">記録</div>
+  </div>
+
+  <div id="tab-today">
+    <div class="section-title">📚 今日の目標</div>
+    <div class="subjects" id="subjectsList"></div>
+    <div class="cheer-bubble hidden" id="cheerBubble">
+      <div class="cheer-from">💌 お母さんから</div>
+      <div class="cheer-msg" id="cheerMsg"></div>
+    </div>
+  </div>
+
+  <div id="tab-badges" class="hidden">
+    <div class="section-title">🏅 集めたバッジ</div>
+    <div class="badges-grid" id="badgesGrid"></div>
+  </div>
+
+  <div id="tab-calendar" class="hidden">
+    <div class="section-title">📅 これまでの記録（直近12週）</div>
+    <div class="calendar">
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-legend">
+        少
+        <div class="cal-legend-box" style="background:#edf2f7"></div>
+        <div class="cal-legend-box" style="background:#c6f6d5"></div>
+        <div class="cal-legend-box" style="background:#9ae6b4"></div>
+        <div class="cal-legend-box" style="background:#68d391"></div>
+        <div class="cal-legend-box" style="background:#48bb78"></div>
+        多
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="settingsModal">
+  <div class="modal">
+    <h2>⚙ 設定</h2>
+    <label>英語の目標時間（分）</label>
+    <input type="number" id="setEng" min="1">
+    <label>数学の目標時間（分）</label>
+    <input type="number" id="setMath" min="1">
+    <label>国語の目標時間（分）</label>
+    <input type="number" id="setJpn" min="1">
+
+    <label style="margin-top:12px">💌 お母さんからの応援メッセージ</label>
+    <div class="msg-list" id="msgList"></div>
+    <textarea id="newMsg" placeholder="新しい応援メッセージを入力..."></textarea>
+    <button class="modal-btn secondary" id="addMsgBtn" style="width:100%;margin-bottom:8px">＋ メッセージを追加</button>
+
+    <div class="modal-buttons">
+      <button class="modal-btn secondary" id="cancelBtn">キャンセル</button>
+      <button class="modal-btn primary" id="saveBtn">保存</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="celebration" id="celebration">
+  <div class="celebration-card">
+    <div class="celebration-icon" id="celebIcon">🎉</div>
+    <div class="celebration-title" id="celebTitle"></div>
+    <div class="celebration-sub" id="celebSub"></div>
+  </div>
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getFirestore, doc, getDoc, setDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCsKzE3NRoMyA9fHj-HOHOU_SiWPxtc6GQ",
+  authDomain: "study-tracker-f0b8f.firebaseapp.com",
+  projectId: "study-tracker-f0b8f",
+  storageBucket: "study-tracker-f0b8f.firebasestorage.app",
+  messagingSenderId: "714725689204",
+  appId: "1:714725689204:web:975da2259be283a5664e21"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const provider = new GoogleAuthProvider();
+
+const STORAGE_KEY = 'study-tracker-v2';
+const SUBJECTS = [
+  { id: 'eng', name: '英語', emoji: '🇬🇧', cls: 'subj-eng' },
+  { id: 'math', name: '数学', emoji: '📐', cls: 'subj-math' },
+  { id: 'jpn', name: '国語', emoji: '📖', cls: 'subj-jpn' }
+];
+const BADGES = [
+  { id: 'first',   icon: '🌱', name: 'はじめの一歩', desc: '初めて記録した',           check: (d)=>d.totalDays>=1 },
+  { id: 'd3',      icon: '🔥', name: '3日連続',       desc: '3日連続で達成',            check: (d)=>d.streak>=3 },
+  { id: 'd7',      icon: '⚡', name: '1週間',         desc: '7日連続で達成',            check: (d)=>d.streak>=7 },
+  { id: 'd14',     icon: '💪', name: '2週間',         desc: '14日連続で達成',           check: (d)=>d.streak>=14 },
+  { id: 'd30',     icon: '🏆', name: '1ヶ月',         desc: '30日連続で達成',           check: (d)=>d.streak>=30 },
+  { id: 'd60',     icon: '👑', name: '2ヶ月',         desc: '60日連続で達成',           check: (d)=>d.streak>=60 },
+  { id: 'complete',icon: '🎯', name: '全教科コンプ',  desc: '1日で全教科の目標達成',    check: (d)=>d.fullDays>=1 },
+  { id: 'complete5',icon:'🌟', name: 'コンプ×5日',    desc: '全教科達成を5日',          check: (d)=>d.fullDays>=5 },
+  { id: 'complete20',icon:'💎',name: 'コンプ×20日',   desc: '全教科達成を20日',         check: (d)=>d.fullDays>=20 },
+  { id: 't500',    icon: '📚', name: '累計500分',     desc: '合計500分勉強した',        check: (d)=>d.totalMinutes>=500 },
+  { id: 't2000',   icon: '🎓', name: '累計2000分',    desc: '合計2000分勉強した',       check: (d)=>d.totalMinutes>=2000 },
+  { id: 't10000',  icon: '🚀', name: '累計10000分',   desc: '合計1万分勉強した',        check: (d)=>d.totalMinutes>=10000 },
+  { id: 'lv5',     icon: '⭐', name: 'Lv.5到達',      desc: 'レベル5になった',          check: (d)=>d.level>=5 },
+  { id: 'lv10',    icon: '✨', name: 'Lv.10到達',     desc: 'レベル10になった',         check: (d)=>d.level>=10 },
+];
+const DEFAULT_MESSAGES = [
+  'よく頑張ったね！毎日コツコツが力になるよ✨',
+  'えらい！今日のあなたが一番カッコいい。',
+  '継続は力なり。確実に成長してるよ！',
+  '1日1日が受験本番への準備だね。応援してる！',
+  'お疲れさま！甘いものでも食べて休んでね🍪',
+  'すごい集中力！見ててうれしいよ。',
+  'やり始めたあなたが偉い。続けてるあなたはもっと偉い。',
+  '今日のがんばり、ちゃんと見てるからね😊',
+  'ナイス！その調子で明日もファイト！',
+  '机に向かう姿、頼もしくなったね。',
+];
+
+function defaultState() {
+  return {
+    targets: { eng: 30, math: 40, jpn: 30 },
+    records: {},
+    points: 0,
+    unlockedBadges: [],
+    messages: [...DEFAULT_MESSAGES],
+    lastCheerDate: null,
+    currentCheer: null,
+  };
+}
+
+let state = loadLocal();
+let currentUser = null;
+let unsubscribeFn = null;
+let isApplyingRemote = false;
+let saveTimer = null;
+
+function loadLocal() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    return Object.assign(defaultState(), JSON.parse(raw));
+  } catch (e) { return defaultState(); }
+}
+function saveLocal() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+async function saveRemote() {
+  if (!currentUser || isApplyingRemote) return;
+  try {
+    setSyncStatus('syncing', '同期中...');
+    const ref = doc(db, "users", currentUser.uid);
+    await setDoc(ref, { state, updatedAt: serverTimestamp() }, { merge: true });
+    setSyncStatus('ok', '同期OK');
+  } catch (e) {
+    console.error('保存失敗', e);
+    setSyncStatus('offline', 'オフライン');
+  }
+}
+
+function save() {
+  saveLocal();
+  if (currentUser) {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(saveRemote, 500);
+  }
+  render();
+}
+
+function mergeStates(local, remote) {
+  const merged = JSON.parse(JSON.stringify(remote));
+  merged.points = Math.max(local.points || 0, remote.points || 0);
+  merged.records = { ...(remote.records || {}) };
+  for (const [date, rec] of Object.entries(local.records || {})) {
+    if (!merged.records[date]) merged.records[date] = {};
+    for (const [subj, mins] of Object.entries(rec)) {
+      merged.records[date][subj] = Math.max(merged.records[date][subj] || 0, mins || 0);
+    }
+  }
+  merged.unlockedBadges = [...new Set([...(local.unlockedBadges||[]), ...(remote.unlockedBadges||[])])];
+  if (!remote.targets) merged.targets = local.targets;
+  if (!remote.messages) merged.messages = local.messages;
+  return merged;
+}
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    currentUser = user;
+    showUserUI(user);
+    setSyncStatus('syncing', '読込中...');
+    try {
+      const ref = doc(db, "users", user.uid);
+      const snap = await getDoc(ref);
+      if (snap.exists() && snap.data().state) {
+        const remote = snap.data().state;
+        state = mergeStates(state, remote);
+      }
+      isApplyingRemote = false;
+      await saveRemote();
+      saveLocal();
+      render();
+      unsubscribeFn = onSnapshot(ref, (snap) => {
+        if (snap.metadata.hasPendingWrites) return;
+        if (snap.exists() && snap.data().state) {
+          isApplyingRemote = true;
+          state = Object.assign(defaultState(), snap.data().state);
+          saveLocal();
+          render();
+          isApplyingRemote = false;
+        }
+      });
+    } catch (e) {
+      console.error('ログイン後の読み込み失敗', e);
+      setSyncStatus('offline', 'オフライン');
+      showToast('クラウドに接続できませんでした');
+    }
+  } else {
+    currentUser = null;
+    showLoginUI();
+    if (unsubscribeFn) { unsubscribeFn(); unsubscribeFn = null; }
+  }
+});
+
+document.getElementById('loginBtn').addEventListener('click', async () => {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (e) {
+    console.error('ログイン失敗', e);
+    showToast('ログインに失敗しました');
+  }
+});
+document.getElementById('logoutLink').addEventListener('click', async () => {
+  if (confirm('ログアウトしますか？\n（記録はこのブラウザに残ります）')) {
+    await signOut(auth);
+  }
+});
+
+function showLoginUI() {
+  document.getElementById('loginBtn').classList.remove('hidden');
+  document.getElementById('userInfo').classList.add('hidden');
+  document.getElementById('syncStatus').classList.add('hidden');
+}
+function showUserUI(user) {
+  document.getElementById('loginBtn').classList.add('hidden');
+  document.getElementById('userInfo').classList.remove('hidden');
+  document.getElementById('syncStatus').classList.remove('hidden');
+  document.getElementById('userName').textContent = user.displayName || user.email;
+  const avatar = document.getElementById('userAvatar');
+  if (user.photoURL) {
+    avatar.innerHTML = `<img src="${user.photoURL}" alt="">`;
+  } else {
+    avatar.textContent = (user.displayName || user.email || '?').charAt(0).toUpperCase();
+  }
+}
+function setSyncStatus(kind, text) {
+  const el = document.getElementById('syncStatus');
+  el.className = 'sync-status ' + (kind === 'ok' ? '' : kind);
+  document.getElementById('syncIcon').textContent = kind === 'ok' ? '●' : (kind === 'syncing' ? '⟳' : '○');
+  document.getElementById('syncText').textContent = text;
+}
+
+function todayKey() { return dateKey(new Date()); }
+function dateKey(d){ return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function formatHeader() {
+  const d = new Date();
+  const days = ['日','月','火','水','木','金','土'];
+  document.getElementById('dateDay').textContent = `${days[d.getDay()]}曜日`;
+  document.getElementById('dateMain').textContent = `${d.getMonth()+1}月${d.getDate()}日`;
+}
+
+function computeStats() {
+  const records = state.records || {};
+  const dates = Object.keys(records).sort();
+  let totalMinutes = 0;
+  let fullDays = 0;
+  for (const k of dates) {
+    const r = records[k] || {};
+    totalMinutes += (r.eng||0)+(r.math||0)+(r.jpn||0);
+    const fullAll = SUBJECTS.every(s => (r[s.id]||0) >= state.targets[s.id]);
+    if (fullAll) fullDays++;
+  }
+  let streak = 0;
+  const tk = todayKey();
+  let cursor = new Date();
+  const hasToday = !!records[tk] && SUBJECTS.some(s => (records[tk][s.id]||0)>0);
+  if (!hasToday) cursor.setDate(cursor.getDate()-1);
+  while (true) {
+    const k = dateKey(cursor);
+    const r = records[k];
+    if (r && SUBJECTS.some(s => (r[s.id]||0) > 0)) {
+      streak++;
+      cursor.setDate(cursor.getDate()-1);
+    } else break;
+  }
+  const points = state.points || 0;
+  const level = Math.floor(points/100) + 1;
+  return { streak, totalMinutes, fullDays, level, points, totalDays: dates.filter(k=>{
+    const r=records[k]; return r && SUBJECTS.some(s=>(r[s.id]||0)>0);
+  }).length };
+}
+
+function render() {
+  const stats = computeStats();
+  document.getElementById('streakVal').textContent = stats.streak;
+  document.getElementById('pointsVal').textContent = stats.points;
+  document.getElementById('levelVal').textContent = `Lv.${stats.level}`;
+  const intoLevel = stats.points % 100;
+  document.getElementById('levelBar').style.width = `${intoLevel}%`;
+  document.getElementById('levelSub').textContent = `次まで ${100-intoLevel}pt`;
+  renderSubjects();
+  renderBadges(stats);
+  renderCalendar();
+  renderCheer();
+}
+
+function renderSubjects() {
+  const today = state.records[todayKey()] || {};
+  const html = SUBJECTS.map(s => {
+    const done = today[s.id] || 0;
+    const target = state.targets[s.id];
+    const pct = Math.min(100, (done/target)*100);
+    const completed = done >= target;
+    return `
+      <div class="subject-card ${completed?'completed':''}">
+        <div class="subject-header">
+          <div class="subject-name">
+            <div class="subject-emoji ${s.cls}">${s.emoji}</div>
+            <div>
+              <div>${s.name}</div>
+              <div class="subject-target">目標 ${target}分</div>
+            </div>
+          </div>
+          <div style="font-size:18px;font-weight:800;color:${completed?'#38a169':'#4a5568'}">
+            ${done}<span style="font-size:12px;color:#a0aec0">/${target}分</span>
+          </div>
+        </div>
+        <div class="subject-progress">
+          <div class="subject-progress-fill" style="width:${pct}%"></div>
+        </div>
+        <div class="subject-actions">
+          <input type="number" inputmode="numeric" class="time-input" id="input-${s.id}" placeholder="やった分数" min="1" max="300">
+          <button class="record-btn" data-subj="${s.id}">やったよ！</button>
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('subjectsList').innerHTML = html;
+  document.querySelectorAll('.record-btn[data-subj]').forEach(btn => {
+    btn.addEventListener('click', () => recordStudy(btn.dataset.subj));
+  });
+}
+
+function renderBadges(stats) {
+  const html = BADGES.map(b => {
+    const unlocked = b.check(stats);
+    return `
+      <div class="badge ${unlocked?'unlocked':''}" title="${b.desc}">
+        <div class="badge-icon">${b.icon}</div>
+        <div class="badge-name">${b.name}</div>
+      </div>`;
+  }).join('');
+  document.getElementById('badgesGrid').innerHTML = html;
+}
+
+function renderCalendar() {
+  const days = 84;
+  const cells = [];
+  const today = new Date();
+  for (let i=days-1; i>=0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate()-i);
+    const k = dateKey(d);
+    const r = state.records[k] || {};
+    const total = (r.eng||0)+(r.math||0)+(r.jpn||0);
+    let lv = 0;
+    if (total > 0) lv = 1;
+    if (total >= 30) lv = 2;
+    if (total >= 60) lv = 3;
+    if (total >= 90) lv = 4;
+    cells.push(`<div class="cal-day ${lv?'l'+lv:''}" title="${k}: ${total}分">${d.getDate()}</div>`);
+  }
+  document.getElementById('calGrid').innerHTML = cells.join('');
+}
+
+function renderCheer() {
+  const tk = todayKey();
+  const today = state.records[tk] || {};
+  const hasAny = SUBJECTS.some(s => (today[s.id]||0) > 0);
+  if (!hasAny) {
+    document.getElementById('cheerBubble').classList.add('hidden');
+    return;
+  }
+  if (state.lastCheerDate !== tk) {
+    const msgs = (state.messages && state.messages.length) ? state.messages : DEFAULT_MESSAGES;
+    state.currentCheer = msgs[Math.floor(Math.random()*msgs.length)];
+    state.lastCheerDate = tk;
+    saveLocal();
+    if (currentUser) { clearTimeout(saveTimer); saveTimer = setTimeout(saveRemote, 500); }
+  }
+  document.getElementById('cheerMsg').textContent = state.currentCheer;
+  document.getElementById('cheerBubble').classList.remove('hidden');
+}
+
+function recordStudy(subjectId) {
+  const input = document.getElementById(`input-${subjectId}`);
+  const minutes = parseInt(input.value, 10);
+  if (!minutes || minutes <= 0) {
+    showToast('やった分数を入力してね');
+    input.focus();
+    return;
+  }
+  if (minutes > 300) {
+    showToast('1回の記録は300分までだよ');
+    return;
+  }
+  const tk = todayKey();
+  if (!state.records[tk]) state.records[tk] = {};
+  state.records[tk][subjectId] = (state.records[tk][subjectId] || 0) + minutes;
+
+  state.points = (state.points || 0) + minutes;
+  const target = state.targets[subjectId];
+  const wasComplete = (state.records[tk][subjectId] - minutes) >= target;
+  const nowComplete = state.records[tk][subjectId] >= target;
+  if (!wasComplete && nowComplete) state.points += 20;
+
+  const allDone = SUBJECTS.every(s => (state.records[tk][s.id]||0) >= state.targets[s.id]);
+  const allDoneBefore = SUBJECTS.every(s => {
+    if (s.id === subjectId) return wasComplete;
+    return (state.records[tk][s.id]||0) >= state.targets[s.id];
+  });
+  if (allDone && !allDoneBefore) state.points += 50;
+
+  input.value = '';
+  const newStats = computeStats();
+  const newlyUnlocked = BADGES.filter(b => b.check(newStats) && !(state.unlockedBadges||[]).includes(b.id));
+  if (!state.unlockedBadges) state.unlockedBadges = [];
+  newlyUnlocked.forEach(b => state.unlockedBadges.push(b.id));
+
+  save();
+
+  if (newlyUnlocked.length > 0) {
+    celebrate(newlyUnlocked[0].icon, `${newlyUnlocked[0].name} を獲得！`, newlyUnlocked[0].desc);
+  } else if (!wasComplete && nowComplete) {
+    if (allDone && !allDoneBefore) {
+      celebrate('🎊', '全教科コンプリート！', 'ボーナス +50pt');
+    } else {
+      celebrate('✅', `${SUBJECTS.find(s=>s.id===subjectId).name} 目標達成！`, `ボーナス +20pt`);
+    }
+  } else {
+    showToast(`+${minutes}pt 記録したよ！`);
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+function celebrate(icon, title, sub) {
+  document.getElementById('celebIcon').textContent = icon;
+  document.getElementById('celebTitle').textContent = title;
+  document.getElementById('celebSub').textContent = sub || '';
+  const el = document.getElementById('celebration');
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 2400);
+}
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => switchTab(t.dataset.tab));
+});
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab===name));
+  ['today','badges','calendar'].forEach(t => {
+    document.getElementById(`tab-${t}`).classList.toggle('hidden', t!==name);
+  });
+}
+
+document.getElementById('settingsBtn').addEventListener('click', openSettings);
+document.getElementById('cancelBtn').addEventListener('click', closeSettings);
+document.getElementById('saveBtn').addEventListener('click', saveSettings);
+document.getElementById('addMsgBtn').addEventListener('click', addMessage);
+document.getElementById('settingsModal').addEventListener('click', (e) => {
+  if (e.target.id === 'settingsModal') closeSettings();
+});
+document.getElementById('celebration').addEventListener('click', (e) => {
+  e.currentTarget.classList.remove('show');
+});
+
+function openSettings() {
+  document.getElementById('setEng').value = state.targets.eng;
+  document.getElementById('setMath').value = state.targets.math;
+  document.getElementById('setJpn').value = state.targets.jpn;
+  renderMessageList();
+  document.getElementById('settingsModal').classList.add('show');
+}
+function closeSettings() {
+  document.getElementById('settingsModal').classList.remove('show');
+}
+function saveSettings() {
+  const e = parseInt(document.getElementById('setEng').value, 10);
+  const m = parseInt(document.getElementById('setMath').value, 10);
+  const j = parseInt(document.getElementById('setJpn').value, 10);
+  if (e>0) state.targets.eng = e;
+  if (m>0) state.targets.math = m;
+  if (j>0) state.targets.jpn = j;
+  save();
+  closeSettings();
+  showToast('設定を保存したよ');
+}
+function renderMessageList() {
+  const msgs = state.messages || [];
+  const html = msgs.map((m,i)=>`
+    <div class="msg-item">
+      <span>${escapeHtml(m)}</span>
+      <button class="msg-del" data-idx="${i}">削除</button>
+    </div>
+  `).join('') || '<div style="padding:8px;color:#a0aec0;font-size:13px">まだメッセージがありません</div>';
+  document.getElementById('msgList').innerHTML = html;
+  document.querySelectorAll('.msg-del').forEach(b => {
+    b.addEventListener('click', () => deleteMessage(parseInt(b.dataset.idx,10)));
+  });
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function addMessage() {
+  const ta = document.getElementById('newMsg');
+  const v = ta.value.trim();
+  if (!v) return;
+  if (!state.messages) state.messages = [];
+  state.messages.push(v);
+  saveLocal();
+  if (currentUser) { clearTimeout(saveTimer); saveTimer = setTimeout(saveRemote, 500); }
+  ta.value = '';
+  renderMessageList();
+}
+function deleteMessage(i) {
+  if (!state.messages) return;
+  state.messages.splice(i, 1);
+  saveLocal();
+  if (currentUser) { clearTimeout(saveTimer); saveTimer = setTimeout(saveRemote, 500); }
+  renderMessageList();
+}
+
+formatHeader();
+render();
+</script>
+</body>
+</html>
